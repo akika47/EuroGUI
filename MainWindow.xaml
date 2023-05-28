@@ -1,0 +1,38 @@
+﻿<Window x:Class="EuroGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EuroGUI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid  x:Name="dtgkiiratas" 
+                   Grid.Column="4"
+                   Background="Cornsilk"
+                   Margin="5" Grid.RowSpan="5"
+                   SelectionUnit="FullRow" SelectionMode="Single"/>
+        <Button Content="4. feladat" x:Name="btnFeladat4" Margin="10" Grid.ColumnSpan="3" Click="btnFeladat4_Click"/>
+        <Button Content="5. feladat" x:Name="btnFeladat5" Margin="10" Grid.Row="1" Grid.ColumnSpan="3" Click="btnFeladat5_Click"/>
+        <Button Content="6. feladat" x:Name="btnFeladat6" Margin="10" Grid.Row="2" Grid.ColumnSpan="3" Click="btnFeladat6_Click"/>
+        <TextBox x:Name="txtEloadoNev" Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <ListBox x:Name="lbKiir" Grid.Row="3" Grid.Column="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Button Content="7. feladat" x:Name="btnFeladat7" Margin="10" Grid.Row="3" Click="btnFeladat7_Click"/>
+        <Label x:Name="lblDatum" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Content="Verseny dátuma:" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button Content="8. feladat" x:Name="btnFeladat8" Margin="10" Grid.Row="4" Click="btnFeladat8_Click"/>
+
+    </Grid>
+</Window>
