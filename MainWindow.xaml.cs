@@ -28,6 +28,7 @@ namespace EuroGUI
 		public MainWindow()
 		{
 			InitializeComponent();
+			dtgkiiratas.SelectedIndex = 0;
 
 			AdatbazisMegnyitas();
 			TermekekBetolteseListaba();
@@ -269,7 +270,7 @@ namespace EuroGUI
 			string queryText = "SELECT datum FROM verseny";
 			MySqlCommand command = new MySqlCommand(queryText, connection);
 			string versenyDatum = "";
-			List<string> szukitett = new List<string>();
+			
 
 			using (MySqlDataReader reader = command.ExecuteReader())
 
