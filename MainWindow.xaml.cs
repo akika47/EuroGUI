@@ -271,7 +271,6 @@ namespace EuroGUI
 			string versenyDatum = "";
 			List<string> szukitett = new List<string>();
 
-			szukitett.Add();
 			using (MySqlDataReader reader = command.ExecuteReader())
 
 			{
