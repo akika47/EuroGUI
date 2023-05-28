@@ -267,24 +267,45 @@ namespace EuroGUI
 
 		private void btnFeladat8_Click(object sender, RoutedEventArgs e)
 		{
-			string queryText = "SELECT datum FROM verseny";
-			MySqlCommand command = new MySqlCommand(queryText, connection);
-			string versenyDatum = "";
-			
-
-			using (MySqlDataReader reader = command.ExecuteReader())
-
+			if (dtgkiiratas.SelectedItem != null)
 			{
-				while (reader.Read())
+				Euroviz selectedEuroviz = (Euroviz)dtgkiiratas.SelectedItem;
+				int versenyEv = selectedEuroviz.Ev;
+
+
+				MySqlConnection connection = new MySqlConnection(connectionString);
+				MySqlCommand command = connection.CreateCommand();
+
+				try
 				{
+					connection.Open();
 
-					versenyDatum = Convert.ToString(reader["datum"]);
+
+					command.CommandText = "SELECT datum FROM verseny WHERE ev = @versenyEv";
+					command.Parameters.AddWithValue("@versenyEv", versenyEv);
+
+
+					string versenyDatum = command.ExecuteScalar()?.ToString();
+
+					if (!string.IsNullOrEmpty(versenyDatum))
+					{
+
+						lblDatum.Content = "Verseny dátuma: " + versenyDatum;
+
+					}
 				}
-
-				lblDatum.Content = "Verseny dátuma: " + versenyDatum;
+				catch (Exception ex)
+				{
+					MessageBox.Show("Hiba történt a verseny dátumának lekérdezésekor: " + ex.Message, "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+				}
+				finally
+				{
+					connection.Close();
+				}
 			}
+		}
 		}
 
 	}
-}
+
 
